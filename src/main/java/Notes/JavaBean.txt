@@ -1,0 +1,6 @@
+Java bean is a java class created by following some standards:
+1. It should be a public class.
+2. It is recommended to implement java.io.Serializable
+3. All member variables should be private and non-static.
+4. Each member variable should have one getter and one setter method.
+5. Class must have one zero param constructor implicitly or explicitly.
