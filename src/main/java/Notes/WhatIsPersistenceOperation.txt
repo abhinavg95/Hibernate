@@ -1,0 +1,16 @@
+Persistence store: Place or store where data will be saved and managed for a long time.
+Examples: Databases (MySQL, PostgreSQL), files
+
+Persistent data: The data of persistence store is called persistence data.
+
+Persistence operations: Insert, Update, Delete, Select
+CRUD, CURD, SCUD
+
+Persistence logic: Code that is written to perform persistence operations.
+Example: Hibernate logic, JDBC logic
+
+Persistence technology/framework : The technology/framework/tool through which we develop persistence logics.
+Example: JDBC (Technology), Hibernate(Framework)
+
+
+
