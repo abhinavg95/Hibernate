@@ -1,0 +1,63 @@
+This class separates persistence logic from other logics of the application and makes them reusable and flexible
+to use.
+
+Three important objects of hibernate persistence logic:
+1. Configuration object
+2. SessionFactory object
+3. Session object
+
+Keeping these three objects ready is called bootstrapping of object.
+
+Configuration is a class present in org.hibernate.cfg package.
+The configuration object takes hibernate configuration file name and location as input value.
+This class is based on builder design pattern
+Using this object we can create SessionFactory Object.
+
+SessionFactory is an interface present in org.hibernate packagee.
+This interface is based on factory design pattern.
+It is an immutable and thread safe object.
+
+Session object contains a jdbc connection object collected from a jdbc connection pool.
+It is the base object for programmers to give persistence instructions to hibernate framework using
+entity class object.
+It is mutable and not thread safe.
+It comes with built in level-1 cache  having capability to hold entity class objects.
+
+Ways to configure hibernate configuration:
+1. xml based configuration
+   old way but is still being used
+2. annotation based configuration
+   new way
+
+DAO class uses hibernate api and activates hibernate framework.
+DAO class uses hibernate api to develop mapping based persistence logic
+
+Dialect is a component in hibernate which is responsible for generating sql queries according to
+given database info.
+
+We create one configuration file for one database.
+There is one entity class per one database table.
+There is one mapping file per one database table.
+
+Naming conventions:
+configuration file : hibernate.cfg.xml
+Mapping file : Employee.hbm.xml, Student.hbm.xml
+
+Hibernate persistence operations are of two types:
+1. Single row operations
+2. Bulk operations
+
+Single row operations examples:
+session.save(entity)
+session.persist(entity)
+session.update(entity)
+session.get(something)
+session.load(something)
+session.merge(something)
+
+Bulk operations:
+HQL : Hibernate query language
+JPQL : Java Persistence Query Language
+QBC : Query By Criteria
+Native SQL
+
