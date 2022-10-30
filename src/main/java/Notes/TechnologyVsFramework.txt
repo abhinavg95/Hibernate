@@ -1,0 +1,4 @@
+Different vendors create different jdbc drivers to use the jdbc apis.
+Hibernate is an Object relational mapping framework under the JPA specification.
+Object relational mapping means linking classes to database tables.
+Hibernate is a non invasive framework.
