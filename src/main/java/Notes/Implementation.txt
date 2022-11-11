@@ -1,0 +1,47 @@
+1. Specifying the <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property> is optional.
+   Hibernate has the ability to figure it out.
+2. The Hibernate keyword is optional while specifying the configuration.
+   hibernate.connection.driver_class and connection.driver_class are the same for hibernate.
+3. <property name="show_sql">true</property> prints sql queries in logs.
+4. <property name="format_sql">true</property> is used for printing sql queries in a more formatted manner.
+5. Hibernate internally uses JDBC PreparedStatement Object by making the generated SQL queries as pre-compiled
+   queries to execute SQL queries in the database software.
+6. It is strongly recommended to execute non-select(insert/update/delete) persistence operations in hibernate
+as transactional statement. The transactional gives ability to commit or rollback data changes.
+7. session.save(product) holds the product object in the level 1 cache till the transaction.commit() method
+   is called.
+8. XML parser is a software program that loads the xml file, checks whether the configuration file is well-formed
+and valid or not. If it is well-formed and valid, it reads and processes the given xml file and generates in Memory
+meta data.
+9. Configuration configuration = new Configuration();
+The above command creates an object of the configuration class.
+10. configuration.configure("hibernate.cfg.xml");
+The above command loads the configuration file from the specified location. Checks whether the file is valid and well-formed
+or not. When it finds everything okay, it creates inMemory metadata of the hibernate cfg file. Here we can give own choice, name
+and location of the cfg file.
+The above command only command only loads the configuration file and not the mapping file. Any errors in the mapping file will
+not be caught at this moment.
+11. SessionFactory sessionFactory = configuration.buildSessionFactory();
+The above command collects the names and locations of hibernate mapping files from the configuration object, loads them
+and checks if they are valid and well formed. InMemory metadata is formed if everything is found ok.
+The sessionFactory object in itself is a heavy object as it consists of small small objects in itself. These small small
+objects are dialects, transaction managers, DataSource(having jdbc connection pool).
+12. Session session = sessionFactory.openSession();
+The session object collects its connection object through DataSource object from SessionFactory from its jdbc connection pool.
+It also collects mapping file meta data and dialect information to create session objects. Session holds a level 1 cache.
+13. Transaction transaction = session.beginTransaction();
+Hibernate can use JTA (Java transactional API) transactions, JDBC transactions or Corba transaction. If we don't mention anything,
+it will use JDBC transaction. To change the transaction model, use the following property
+<property name = "transaction.factory_class">jta<property>
+Till the time transaction.commit() is not called save(product), the entity object will be kept in the level 1 cache of session object.
+
+14. session.close()
+It closes the connection with the database and returns back the connection to the jdbc connection pool.
+It empties and closes thee level 1 cache.
+
+15. sessionFactory.close()
+Releases data source by releasing jdbc connection pool
+Releases level 2 cache.
+Flushes metadata of configuration file.
+Destroys all methods associated with session factory.
+Deactivates the hibernate framework.
